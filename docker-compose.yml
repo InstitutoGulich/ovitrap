@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  db:
+    build: ./database
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+
+  server:
+    build: ./ovitrap-monitor-server
+    restart: always
+    # in development
+    #command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: gunicorn oeg.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - ./ovitrap-monitor-server/:/usr/src/app/
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  client:
+    build: ./ovitrap-monitor-client
+    restart: always
+    ports:
+      - 90:80
+    env_file:
+      - .env
+    depends_on:
+      - server
+    volumes:
+      - ./ovitrap-monitor-client/nginx:/etc/nginx/conf.d
+  

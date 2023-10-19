@@ -1,0 +1,19 @@
+docker exec -it ovitrap-server-1 /bin/bash
+
+python manage.py shell
+
+from django.contrib.auth.models import User
+usuarios = User.objects.all()
+for usuario in usuarios:
+    if usuario.is_superuser:
+        print(f"{usuario.username} is admin.")
+    else:
+        print(f"{usuario.username} isnt admin.")
+
+admin_user = User.objects.get(username='nombre_usuario_admin')
+admin_user.set_password('nueva_contraseña')
+admin_user.save()
+
+
+
+
