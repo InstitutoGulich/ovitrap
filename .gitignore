@@ -1,4 +1,5 @@
 database/backup/*.sql
 database/backup/*.dump
+database/*.zip
 data/db 
 .env
