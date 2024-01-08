@@ -11,7 +11,7 @@ Two scripts are added to restore the database and backup the database (scripts f
 
 Finally, WSGI Gunicorn server added to run the system in production.
 
-# Install
+## Install
 
 ```bash
     #copy and setting parameters in .env
@@ -20,19 +20,24 @@ Finally, WSGI Gunicorn server added to run the system in production.
     docker compose up -d --build    
 ```
 
-# Initialization db (if you have an backup)
+## Initialization db (if you have an backup)
 
 ```bash
+    # make migrations
+    bash scripts/run_migration.sh
     # edit scripts/restore_db.sh and set parameters
     nano scripts/restore_db.sh
     # run process
-    cd scripts
-    bash restore_db.sh
-    # update app
-    cd ..
+    bash scripts/restore_db.sh
     docker compose restart
 ```
-# backup of database
+
+## Change password admin
+```
+You can see the instructions in file: scripts/change_admin_passwd.txt
+```
+
+## make a backup of database
 ```bash
     # edit scripts/backup.sh and set parameters
     nano scripts/backup.sh
@@ -42,7 +47,7 @@ Finally, WSGI Gunicorn server added to run the system in production.
     #(getting the backup in ./database/backup)
 ```
 
-# Authors
+## Authors
 
 Pablo Zader
 Jorge Rubio
