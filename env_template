@@ -1,19 +1,32 @@
 # AWS
-export S3_BUCKET=name
-export AWS_ACCESS_KEY_ID=id
-export AWS_SECRET_ACCESS_KEY=key
+export S3_BUCKET=name_bucket
+export AWS_ACCESS_KEY_ID=ID_AWS
+export AWS_SECRET_ACCESS_KEY=KEY_ACCESS_AWS
 
 # Postgres
-POSTGRES_USER=user
-POSTGRES_PASSWORD=password
-POSTGRES_DBNAME=postgis
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=passw
+POSTGRES_DBNAME=postgres
+POSTGRES_PORT=5432
+POSTGRES_HOST="name_container_db"
 
 # Django
 DEBUG=1
 SECRET_KEY=foo
-DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+DJANGO_ALLOWED_HOSTS="localhost 127.0.0.1 [::1]"
+
+# In prod change to True
+CSRF_COOKIE_SECURE=False
+SESSION_COOKIE_SECURE=False
+
+# In prod change to False
+DEBUG=True
 
 # Scripts
-PG_CONTAINER_NAME="ovitrap-db-1"
+
+PG_CONTAINER_NAME="name_container_db"
 BACKUP_DIR="../database/backup"
+
+BASE_URL="http://my_domain/api"
+VUE_APP_BACKEND_URL="http://my_domain/api"
 
