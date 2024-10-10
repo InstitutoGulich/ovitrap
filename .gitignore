@@ -3,3 +3,4 @@ database/backup/*.dump
 database/*.zip
 data/db 
 .env
+ovitrap-monitor-client/nginx/nginx.conf
